@@ -7,7 +7,7 @@ from urllib.parse import urljoin, urlparse, unquote
 visited = set()
 
 # ---------- Helpers ----------
-def get_file_path(url, base_url, base_folder="ADF"):
+def get_file_path(url, base_url, base_folder="AWER"):
     """
     Convert a URL into a local file path inside base_folder,
     stripping the base_url path prefix.
@@ -33,7 +33,7 @@ def get_file_path(url, base_url, base_folder="ADF"):
 
     return local_path
 
-def save_file(url, base_url, base_folder="ADF"):
+def save_file(url, base_url, base_folder="AWER"):
     """
     Save an asset file (CSS, JS, Image).
     """
@@ -63,7 +63,7 @@ def download_assets(soup, page_url, base_url):
             save_file(full_url, base_url)
 
 # ---------- Crawler ----------
-def crawl(url, base_url, domain, base_folder="ADF"):
+def crawl(url, base_url, domain, base_folder="AWER"):
     if url in visited:
         return
     visited.add(url)
@@ -109,9 +109,9 @@ def main():
     start_url = sys.argv[1]
     domain = urlparse(start_url).netloc
 
-    os.makedirs("ADF", exist_ok=True)
+    os.makedirs("AWER", exist_ok=True)
 
-    crawl(start_url, start_url, domain, "ADF")
+    crawl(start_url, start_url, domain, "AWER")
 
 if __name__ == "__main__":
     main()
